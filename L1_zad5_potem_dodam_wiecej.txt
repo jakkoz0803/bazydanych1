@@ -1,0 +1,42 @@
+lekcja 1
+	zad 5
+
+INSERT INTO postac VALUES
+(4,'Andreas','wiking','1970-01-02',52),
+(5,'Daniel','wiking','1968-03-09',54),
+(6,'Johann','wiking','1975-08-23',47),
+(7,'Sven','wiking','1972-09-11',50),
+(8,'Erling','wiking','1959-06-10',63);
+
+CREATE TABLE statek(
+nazwa_statku VARCHAR(50) PRIMARY KEY,
+rodzaj_statku ENUM('duzy','maly'),
+data_wodowania DATE,
+max_ladownosc INT UNSIGNED);
+
+INSERT INTO statek VALUES
+('statek_1','duzy','2011-11-11',200),
+('statek_2','maly','2012-01-12',120);
+
+ALTER TABLE postac ADD COLUMN funkcja VARCHAR(50);
+
+UPDATE postac SET funkcja = 'kapitan' WHERE nazwa = 'Bjorn';
+
+ALTER TABLE postac ADD COLUMN nazwa_statku VARCHAR(50);
+ALTER TABLE postac ADD CONSTRAINT FOREIGN KEY(nazwa_statku) REFERENCES statek(nazwa_statku);
+
+UPDATE postac SET nazwa_statku = 'statek_1' WHERE nazwa = 'Bjorn';
+UPDATE postac SET nazwa_statku = 'statek_1' WHERE nazwa = 'Drozd';
+UPDATE postac SET nazwa_statku = 'statek_1' WHERE nazwa = 'Andreas';
+UPDATE postac SET nazwa_statku = 'statek_1' WHERE nazwa = 'Daniel';
+UPDATE postac SET nazwa_statku = 'statek_1' WHERE nazwa = 'Johann';
+UPDATE postac SET nazwa_statku = 'statek_1' WHERE nazwa = 'Sven';
+UPDATE postac SET nazwa_statku = 'statek_1' WHERE nazwa = 'Erling';
+
+DELETE FROM izba WHERE nazwa_izby = 'spizarnia';
+
+DROP TABLE izba;
+===================================================================================================
+lekcja 2
+	zad 1
+
