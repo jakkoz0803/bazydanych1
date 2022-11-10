@@ -119,4 +119,11 @@ INSERT INTO postac VALUES
 
 	zad 3
 UPDATE postac SET nazwa_statku = 'statek_1' WHERE nazwa LIKE '%a%';
-UPDATE statek SET max_ladownosc = max_ladownosc * 0.7;
+UPDATE statek SET max_ladownosc = max_ladownosc * 0.7
+WHERE data_wodowania BETWEEN '1901-01-01' AND '2000-12-31';
+SELECT IF(wiek > 1000,'tak','nie') FROM postac;
+
+	zad 4
+ALTER TABLE postac MODIFY rodzaj ENUM('kobieta','wiking','ptak','syrena','waz');
+INSERT INTO postac VALUES
+('8','Loko','waz','1949-07-29','73',NULL,NULL,'22223332232');
