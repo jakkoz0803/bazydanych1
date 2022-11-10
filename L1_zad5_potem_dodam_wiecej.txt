@@ -90,8 +90,8 @@ DELETE FROM izba WHERE nazwa_izby = 'spizarnia';
 DROP TABLE izba;
 ===================================================================================================
 lekcja 2
-	zad 1
 
+	zad 1
 SELECT * FROM postac WHERE rodzaj = 'wiking' ORDER BY wiek DESC;
 DELETE FROM postac WHERE wiek = 63;
 DELETE FROM postac WHERE wiek = 54;
@@ -102,3 +102,21 @@ ALTER TABLE walizka DROP FOREIGN KEY walizka_ibfk_1;
 ALTER TABLE postac MODIFY id_postaci INT NOT NULL;
 ALTER TABLE postac DROP PRIMARY KEY;
 
+	zad 2
+ALTER TABLE postac ADD COLUMN pesel VARCHAR(11);
+UPDATE postac SET pesel='01234567890' WHERE id_postaci = 1;
+UPDATE postac SET pesel='12345432123' WHERE id_postaci = 2;
+UPDATE postac SET pesel='00033322255' WHERE id_postaci = 3;
+UPDATE postac SET pesel='00099922255' WHERE id_postaci = 4;
+UPDATE postac SET pesel='99099922255' WHERE id_postaci = 6;
+UPDATE postac SET pesel='99888892225' WHERE id_postaci = 7;
+ALTER TABLE postac ADD CONSTRAINT PRIMARY KEY(pesel);
+
+ALTER TABLE postac MODIFY rodzaj ENUM('kobieta','wiking','ptak','syrena');
+
+INSERT INTO postac VALUES
+('5','Gertruda Nieszczera','syrena','1985-06-30','37',NULL,NULL,'65445665456');
+
+	zad 3
+UPDATE postac SET nazwa_statku = 'statek_1' WHERE nazwa LIKE '%a%';
+UPDATE statek SET max_ladownosc = max_ladownosc * 0.7;
