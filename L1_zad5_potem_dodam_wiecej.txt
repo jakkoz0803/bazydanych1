@@ -143,3 +143,12 @@ FOREIGN KEY(pesel) REFERENCES postac(pesel) );
 
 INSERT INTO marynarz SELECT * FROM postac WHERE nazwa_statku IS NOT NULL;
 
+	zad 5
+UPDATE marynarz SET nazwa_statku = NULL;
+UPDATE postac SET nazwa_statku = NULL;
+DELETE FROM marynarz WHERE pesel = '99099922255';
+DELETE FROM postac WHERE pesel = '99099922255';
+DELETE FROM statek WHERE nazwa_statku LIKE '%';
+ALTER TABLE postac DROP FOREIGN KEY postac_ibfk_1;
+DROP TABLE statek;
+CREATE TABLE zwierz( id INT AUTO_INCREMENT PRIMARY KEY, nazwa VARCHAR(40), wiek INT);
