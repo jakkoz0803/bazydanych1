@@ -209,4 +209,18 @@ SELECT nazwa, ilosc, rodzaj FROM zasob WHERE rodzaj IS NOT NULL GROUP BY rodzaj 
 
 	zad 3
 SELECT idKreatury, idZasobu, ilosc, SUM(idZasobu * ilosc) FROM ekwipunek GROUP BY idKreatury;
+albo;
+SELECT kreatura.nazwa, SUM(ekwipunek.ilosc) AS ilosc FROM kreatura INNER JOIN ekwipunek ON kreatura.idKreatury - ekwipunek.idKreatury GROUP BY nazwa;
+
+SELECT kreatura.nazwa FROM kreatura LEFT JOIN ekwipunek ON kreatura.idKreatury WHERE ekwipunek.idKreatury IS NULL;
+
+SELECT kreatura.nazwa FROM kreatura LEFT JOIN ekwipunek ON kreatura.idKreatury = ekwipunek.idKreatury WHERE ekwipunek.idKreatury IS NULL;
+
+	zad 4
+SELECT kreatura.nazwa, kreatura.dataUr, ekwipunek.idZasobu, zasob.nazwa FROM kreatura
+NATURAL JOIN ekwipunek
+INNER JOIN zasob ON ekwipunek.idZasobu = zasob.idZasobu
+WHERE kreatura.rodzaj = 'wiking' AND kreatura.dataUr LIKE '167%';
+nie wiem czy dobrze ^;
+
 
