@@ -223,4 +223,4 @@ INNER JOIN zasob ON ekwipunek.idZasobu = zasob.idZasobu
 WHERE kreatura.rodzaj = 'wiking' AND kreatura.dataUr LIKE '167%';
 nie wiem czy dobrze ^;
 
-
+4.2/ tylko 4 kreatury maja w ekwipunku jedzenie ??? (a trzeba wyswietlic 5 najmlodszych);
