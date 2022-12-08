@@ -223,4 +223,18 @@ INNER JOIN zasob ON ekwipunek.idZasobu = zasob.idZasobu
 WHERE kreatura.rodzaj = 'wiking' AND kreatura.dataUr LIKE '167%';
 nie wiem czy dobrze ^;
 
-4.2/ tylko 4 kreatury maja w ekwipunku jedzenie ??? (a trzeba wyswietlic 5 najmlodszych);
+SELECT ekwipunek.idKreatury, ekwipunek.idZasobu, zasob.rodzaj FROM ekwipunek
+INNER JOIN zasob ON zasob.idZasobu = ekwipunek.idZasobu AND zasob.rodzaj = 'jedzenie';
+
+SELECT CONCAT(b.nazwa,' - ',a.nazwa) AS id_roznica_5 FROM kreatura a
+JOIN kreatura b ON a.idKreatury = b.idKreatury + 5;
+
+	zad 5
+SELECT kreatura.rodzaj, AVG(ekwipunek.ilosc * zasob.waga * zasob.ilosc) FROM zasob
+INNER JOIN ekwipunek ON zasob.idZasobu = ekwipunek.idZasobu
+INNER JOIN kreatura ON ekwipunek.idKreatury = kreatura.idKreatury
+WHERE kreatura.rodzaj NOT IN('malpa','waz') AND ekwipunek.ilosc < 30
+GROUP BY kreatura.rodzaj;
+
+
+
