@@ -257,7 +257,12 @@ INNER JOIN ekwipunek ON ekwipunek.idKreatury = kreatura2.idKreatury
 GROUP BY wyprawa.nazwa;
 
 	zad 2
-1. dla kazdej wyprawy wypisz jej nazwe, liczbe uczestnikow oraz nazwy tych uczestnikow w jednej linii
+SELECT wyprawa.nazwa, COUNT(uczestnicy.id_uczestnika), GROUP_CONCAT(kreatura2.nazwa) FROM wyprawa
+INNER JOIN uczestnicy ON wyprawa.id_wyprawy = uczestnicy.id_wyprawy
+INNER JOIN kreatura2 ON kreatura2.idKreatury = uczestnicy.id_uczestnika
+GROUP BY wyprawa.nazwa;
+
 2. wypisz kolejne etapy wszystkich wypraw wraz z nazwami sektorow, sortujac najpierw wedlug
    daty poczatku wyprawy, a nastepnie wedlug kolejnosci wystepowania etapow. w kazdym etapie
    okresl nazwe kierownika danej wyprawy
+
