@@ -250,5 +250,14 @@ CREATE TABLE wyprawa AS SELECT * FROM wikingowie.wyprawa;
 SELECT kreatura2.idKreatury, kreatura2.nazwa FROM kreatura2
 WHERE NOT EXISTS (SELECT * FROM uczestnicy WHERE kreatura2.idKreatury = uczestnicy.id_uczestnika);
 
-3. dla kazdej wyprawy wypisac jej nazwe oraz sume ilosci ekwipunku jaka zostala zabrana
-   przez uczestnikow tej wyprawy
+SELECT wyprawa.nazwa, SUM(ekwipunek.ilosc) FROM wyprawa
+INNER JOIN uczestnicy ON uczestnicy.id_wyprawy = wyprawa.id_wyprawy
+INNER JOIN kreatura2 ON kreatura2.idKreatury = uczestnicy.id_uczestnika
+INNER JOIN ekwipunek ON ekwipunek.idKreatury = kreatura2.idKreatury
+GROUP BY wyprawa.nazwa;
+
+	zad 2
+1. dla kazdej wyprawy wypisz jej nazwe, liczbe uczestnikow oraz nazwy tych uczestnikow w jednej linii
+2. wypisz kolejne etapy wszystkich wypraw wraz z nazwami sektorow, sortujac najpierw wedlug
+   daty poczatku wyprawy, a nastepnie wedlug kolejnosci wystepowania etapow. w kazdym etapie
+   okresl nazwe kierownika danej wyprawy
