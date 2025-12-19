@@ -1,0 +1,67 @@
+git clone https://github.com/jakkoz0803/appwww-biblioteka
+cd .\appwww-biblioteka\
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+(wkleić db.sqlite3)
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+
+
+POST http://127.0.0.1:8000/api/auth/register/
+{
+    "username": "user",
+    "password": "pass"
+}
+
+POST http://127.0.0.1:8000/api/auth/token/
+{
+  "username": "user",
+  "password": "pass"
+}
+
+POST http://127.0.0.1:8000/api/borrows/create/
+Headers: Authorization | Token <token>
+{
+    "book": 8,
+    "due_date": "2025-12-20T12:00:00Z"
+}
+
+GET http://127.0.0.1:8000/api/borrows/my/
+Headers: Authorization | Token <token>
+
+PUT http://127.0.0.1:8000/api/borrows/<id borrow>/return/
+
+
+
+
+
+
+---------------------------------------------------------
+
+POST http://127.0.0.1:8000/api/auth/token/
+{
+  "username": "joejqd",
+  "password": "haslo123"
+}
+{
+    "token": "a04bf3e737103cd98ebe72f2a7ed560dea992f8b"
+}
+----------------------------------------------
+{
+  "username": "uzytkownik1",
+  "password": "haslo123"
+}
+{
+    "token": "2b33e19a617178a7c7fc6156f539d79f601dba8f"
+}
+----------------------------------------------
+{
+  "username": "postman_test",
+  "password": "postman_haslo"
+}
+{
+    "token": "13bcb355ae16a52b3147cc0bed8f341a257e1af9"
+}
+----------------------------------------------
